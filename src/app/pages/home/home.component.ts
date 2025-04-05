@@ -9,12 +9,10 @@ import { AfterViewInit, Component } from '@angular/core';
 })
 export class HomeComponent implements AfterViewInit {
   showContent: boolean = false;
- 
- 
+
   ngAfterViewInit(): void {
     setTimeout(() => {
-       this.showContent = true;
-    }, );
+      this.showContent = true;
+    });
   }
-
 }

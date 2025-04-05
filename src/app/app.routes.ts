@@ -11,6 +11,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'typing_test', component: TypingTestComponent },
   { path: 'leaderboard', component: LeaderboardComponent },
+  {path:'about', component:AboutComponent},
   { path: 'themes', component: ThemesComponent },
   { path: 'error', component: ErrorComponent },
   { path: '**', component: ErrorComponent },
