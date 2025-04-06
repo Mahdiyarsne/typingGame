@@ -1,1 +1,56 @@
-<p>leaderboard works!</p>
+<div class="wrapper">
+  <div class="title-section">
+    <h1>LeaderBoard</h1>
+  </div>
+  <div class="leaderborad">
+    @if (showContent) {
+    <ng-content>
+      @if (leaderboard.length > 0) {
+
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Clean Speed(WPM)</th>
+            <th>Row Speed(WPM)</th>
+            <th>Accuracy(%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (entry of leaderboard; track $index) {
+          <tr>
+            <td>{{ (currentPage - 1) * pageSize + $index + 1 }}</td>
+            <td>{{ entry.username }}</td>
+            <td>{{ entry.cleanSpeed }}</td>
+            <td>{{ entry.rawSpeed }}</td>
+            <td>{{ entry.accuracy }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+
+      @if (leaderboard.length ===0 && showLeaderboardMessage === true) {
+      <p>No leaderboard data available.</p>
+      } }
+    </ng-content>
+    }
+  </div>
+
+  @if (leaderboard.length > 0) {
+  <div class="pagination">
+    @if (showContent) {
+
+    <ng-content>
+      <button (click)="previousPage()" [disabled]="currentPage === 1">
+        Previous
+      </button>
+      <span>Page {{ currentPage }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+        Next
+      </button>
+    </ng-content>
+    }
+  </div>
+  }
+</div>
