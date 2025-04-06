@@ -1,1 +1,21 @@
-<p>themes works!</p>
+<div class="wrapper">
+  <div class="titlle-section">
+    <h3>Themes</h3>
+  </div>
+
+  @if (showContent) {
+  <div class="theme-container">
+    @for (theme of themes; track $index) {
+    <div class="theme-option" (click)="selectedTheme(theme.name)">
+       <span class="theme-name">{{theme.displayName}}</span>
+
+       <div class="theme-preview">
+        @for (color of theme.colors; track $index) {
+            <span class="color-dot" [style.backgroundColor]="color"></span>
+        }
+       </div>
+    </div>
+    }
+  </div>
+  }
+</div>
