@@ -9,7 +9,7 @@ export class Word {
     return this.word === otherWord.word;
   }
 
-  getLettersNumber(): number {
+  getLetterNumber(): number {
     return this.letters.length;
   }
 
@@ -28,7 +28,7 @@ export class Word {
     return correctLettersCount;
   }
 
-  toString(){
+  toString() {
     return this.word;
   }
 }

@@ -1,1 +1,23 @@
-<p>word-display works!</p>
+<div class="word-display">
+  @if (showContent) {
+  <ng-content>
+    <span
+      *ngFor="let word of gameService.words; let wordIndex = index"
+      class="word"
+      [ngClass]="{ 'current-word': wordIndex === gameService.currentWordIndex }"
+    >
+      <span
+        *ngFor="let letter of word.split(''); let letterIndex = index"
+        class="letter"
+        [ngClass]="{
+          correct:
+            gameService.letterStatus[wordIndex][letterIndex].correct === true,
+          incorrect:
+            gameService.letterStatus[wordIndex][letterIndex].correct === false
+        }"
+        >{{ letter }}
+      </span>
+    </span>
+  </ng-content>
+  }
+</div>

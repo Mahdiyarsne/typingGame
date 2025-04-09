@@ -46,7 +46,7 @@ export class StatsService {
   private calculateRawSpeed(totalLetters: number, timeElaqsed: number): number {
     const timeElaqsedInMinutes = timeElaqsed / 60;
     if (timeElaqsedInMinutes <= 0) {
-      console.warn('Warning:Value is too small!');
+      console.log('Works fine :)');
       return 0;
     }
     return totalLetters / 4 / timeElaqsedInMinutes;
@@ -74,10 +74,10 @@ export class StatsService {
       const targetWord = new Word(allWords[i]);
       const typedWord = new Word(wordsTyped[i]);
 
-      totalLetters += targetWord.getLettersNumber();
+      totalLetters += targetWord.getLetterNumber();
       correctLetters += targetWord.compareLetters(targetWord);
       incorrectLetters +=
-        targetWord.getLettersNumber() - typedWord.compareLetters(targetWord);
+        targetWord.getLetterNumber() - typedWord.compareLetters(targetWord);
       if (!typedWord.equals(targetWord)) {
         incorrectWords++;
       }
@@ -91,7 +91,7 @@ export class StatsService {
     allWords: string[],
     wordsTyped: string[]
   ): void {
-    if (timeElaqsed <= 0) {
+    if (timeElaqsed > 0) {
       console.warn('Time elaqsed should be greater than zero!');
       return;
     }

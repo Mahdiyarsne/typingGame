@@ -24,7 +24,7 @@ export class TypingTestComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.gameService.restGame();
-    console.log('Game restart on component distuction');
+    this.gameService.resetGame();
+    console.log('Game rest on component distuction');
   }
 }

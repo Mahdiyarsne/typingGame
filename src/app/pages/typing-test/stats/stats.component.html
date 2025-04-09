@@ -1,1 +1,51 @@
-<p>stats works!</p>
+<div class="stats-container">
+  @if (showContent) {
+  <ng-content>
+    <button class="toggle-button" (click)="toggleStats()">
+      {{ showStats ? "-" : "+" }}
+    </button>
+
+    @if (showStats) {
+    <div class="stats">
+      <div class="stat-column">
+        <div class="stat-item">
+          <span>Clean Speed:</span>
+          <span class="result">{{ stats.cleanSpeed }} wpm</span>
+        </div>
+
+        <div class="stat-item">
+          <span>Raw Speed:</span>
+          <span class="result">{{ stats.rawSpeed }} %</span>
+        </div>
+
+        <div class="stat-item">
+          <span>Accuracy:</span>
+          <span class="result">{{ stats.accuracy }} wpm</span>
+        </div>
+      </div>
+      <div class="stat-column">
+        <div class="stat-item">
+          <span>All Letters:</span>
+          <span class="result">{{ stats.allLetters }}</span>
+        </div>
+
+        <div class="stat-item">
+          <span>All Words:</span>
+          <span class="result">{{ stats.allWords }}</span>
+        </div>
+
+        <div class="stat-item">
+          <span>incorrect Letters:</span>
+          <span class="result">{{ stats.allLetters }}</span>
+        </div>
+
+        <div class="stat-item">
+          <span>Incorrect Words:</span>
+          <span class="result">{{ stats.incorrectWords }}</span>
+        </div>
+      </div>
+    </div>
+    }
+  </ng-content>
+  }
+</div>

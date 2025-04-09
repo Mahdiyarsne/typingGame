@@ -6,7 +6,7 @@ import { map, Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class WordListService {
-  private filePath = 'englis-1k.txt';
+  private filePath = 'english-1.txt';
   private loadedWords: string[] = [];
   private defaultWordCount = 25;
   private http = inject(HttpClient);
@@ -40,12 +40,12 @@ export class WordListService {
     return randomIndices;
   }
 
-  getRandomWord(count?: number): string[] {
+  getRandomWords(count?: number): string[] {
     if (this.loadedWords.length === 0) {
       throw new Error('Words have not been loaded.call loadWords() first.');
     }
 
-    const effectiveCount = count ?? this.defaultWordCount;
+    const effectiveCount = count?? this.defaultWordCount;
     const randomIndices = this.getRandomIndices(effectiveCount);
     const result: string[] = [];
 

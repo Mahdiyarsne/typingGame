@@ -1,1 +1,17 @@
-<p>input-row works!</p>
+<div class="input-row">
+  @if (showCotent) {
+  <ng-content>
+    <input
+      #wordInput
+      type="text"
+      id="word-input"
+      placeholder="Start Typing..."
+      autocomplete="off"
+      autocapitalize="off"
+      (input)="onInputChange()"
+      (keydown)="onKeyDown($event)"
+    />
+    <button id="redo" (click)="onRedoCkick()">Redo</button>
+  </ng-content>
+  }
+</div>

@@ -12,7 +12,7 @@ export class GameService {
   wordsTyped: string[] = [];
   wordSubject = new BehaviorSubject<string[]>([]);
   currentInput: string = '';
-  letterStatus: { correct: boolean | null }[][] = [];
+  letterStatus: { correct: boolean | null }[] [] = [];
   currentWordIndex: number = 0;
   gameStarted: boolean = false;
 
@@ -20,14 +20,16 @@ export class GameService {
   public timerService = inject(TimerService);
   public statsService = inject(StatsService);
 
-  constructor() {}
+  constructor() {
+    this.loadGameWords();
+  }
 
   getWords() {
     return this.wordSubject.asObservable();
   }
 
   getRandomWords(count?: number): void {
-    this.words = this.wordListService.getRandomWord(count);
+    this.words = this.wordListService.getRandomWords(count);
     this.letterStatus = this.words.map((word) =>
       word.split('').map(() => ({ correct: null }))
     );
@@ -88,7 +90,7 @@ export class GameService {
     this.wordsTyped = [];
   }
 
-  restGame(): void {
+  resetGame(): void {
     this.endGame();
     this.clearGameData();
     this.getRandomWords();
@@ -120,7 +122,7 @@ export class GameService {
     this.wordsTyped.push(this.currentInput);
     this.markSkippedLettersAsIncorrect();
     if (this.isLastWord()) {
-      this.restGame();
+      this.resetGame();
     } else {
       this.advanceToNextWord();
     }
